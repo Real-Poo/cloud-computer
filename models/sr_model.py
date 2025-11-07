@@ -101,19 +101,19 @@ class UNetSRDecoderInt8Friendly(nn.Module):
         return x
 
     def forward(self, b, s4, s3, s2, s1):
-        u4 = self.up4(b);  u4 = self._match(u4, s4)
+        u4 = self.up4(b);  #u4 = self._match(u4, s4)
         d4 = self.d4_2(torch.cat([u4, s4], dim=1))
         d4 = self.d4_1(d4)
 
-        u3 = self.up3(d4); u3 = self._match(u3, s3)
+        u3 = self.up3(d4); #u3 = self._match(u3, s3)
         d3 = self.d3_2(torch.cat([u3, s3], dim=1))
         d3 = self.d3_1(d3)
 
-        u2 = self.up2(d3); u2 = self._match(u2, s2)
+        u2 = self.up2(d3); #u2 = self._match(u2, s2)
         d2 = self.d2_2(torch.cat([u2, s2], dim=1))
         d2 = self.d2_1(d2)
 
-        u1 = self.up1(d2); u1 = self._match(u1, s1)
+        u1 = self.up1(d2); #u1 = self._match(u1, s1)
         d1 = self.d1_2(torch.cat([u1, s1], dim=1))
         d1 = self.d1_1(d1)
 
